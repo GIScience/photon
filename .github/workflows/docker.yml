@@ -69,7 +69,7 @@ jobs:
                       --build-arg PHOTON_VERSION=latest \
                       ${TAGS_NIGHTLY} .
           echo ::set-output name=buildx_args_test::--platform ${DOCKER_PLATFORMS} \
-                      --build-arg PHOTON_VERSION=latest --build-arg SKIP_TEST=false \
+                      --build-arg PHOTON_VERSION=latest --build-arg SKIP_TESTS=false \
                       ${TAGS_TEST} .
       - name: Build with tests
         run: |
