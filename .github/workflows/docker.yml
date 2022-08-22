@@ -48,6 +48,7 @@ jobs:
           TAGS_VERSION="--tag ${DOCKER_IMAGE}:${DOCKER_VERSION}"
           TAGS_LATEST="--tag ${DOCKER_IMAGE}:latest"
           TAGS_NIGHTLY="--tag ${DOCKER_IMAGE}:nightly"
+          TAGS_TEST="--tag ${DOCKER_IMAGE}:test"
 
           if [[ $CURRENT_VERSIONS =~ $DOCKER_VERSION ]]; then
             echo "Version: $DOCKER_VERSION present or latest. Skipping it!"
@@ -59,14 +60,20 @@ jobs:
 
           echo ::set-output name=build_version::${BUILD_VERSION}
           echo ::set-output name=buildx_args_version::--platform ${DOCKER_PLATFORMS} \
-                      --build-arg OHSOMEAPI_VERSION=${DOCKER_VERSION} \
+                      --build-arg PHOTON_VERSION=${DOCKER_VERSION} \
                       ${TAGS_VERSION} .
           echo ::set-output name=buildx_args_latest::--platform ${DOCKER_PLATFORMS} \
-                      --build-arg OHSOMEAPI_VERSION=${DOCKER_VERSION} \
+                      --build-arg PHOTON_VERSION=${DOCKER_VERSION} \
                       ${TAGS_LATEST} .
           echo ::set-output name=buildx_args_nightly::--platform ${DOCKER_PLATFORMS} \
-                      --build-arg OHSOMEAPI_VERSION=latest \
+                      --build-arg PHOTON_VERSION=latest \
                       ${TAGS_NIGHTLY} .
+          echo ::set-output name=buildx_args_test::--platform ${DOCKER_PLATFORMS} \
+                      --build-arg PHOTON_VERSION=latest --build-arg SKIP_TEST=false \
+                      ${TAGS_TEST} .
+      - name: Build with tests
+        run: |
+          docker buildx build --output "type=image,push=false" ${{ steps.prepare.outputs.buildx_args_test }}
       - name: Build version if not present
         if: ${{ steps.prepare.outputs.build_version == 'true' }}
         run: |
