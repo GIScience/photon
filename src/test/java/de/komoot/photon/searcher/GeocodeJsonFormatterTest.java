@@ -32,7 +32,7 @@ public class GeocodeJsonFormatterTest {
             assertEquals("park", feature.getJSONObject("properties").getString(Constants.OSM_VALUE));
         }
     }
-    
+
     private PhotonResult createDummyResult(String postCode, String name, String osmKey,
                     String osmValue) {
         return new MockPhotonResult()

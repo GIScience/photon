@@ -80,4 +80,3 @@ involve a 'Street' will suddenly also search for places containing 'Saint'.
 
 Do not create synonyms for terms that are used as classification terms.
 Photon will not complain but again there might be unintended side effects.
-

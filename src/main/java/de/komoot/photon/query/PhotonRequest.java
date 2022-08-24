@@ -35,7 +35,7 @@ public class PhotonRequest {
     public int getLimit() {
         return limit;
     }
-    
+
     public Envelope getBbox() {
         return bbox;
     }

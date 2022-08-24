@@ -31,7 +31,7 @@ public class StreetDupesRemoverTest {
         List<PhotonResult> dedupedResults = streetDupesRemover.execute(allResults);
         assertEquals(2, dedupedResults.size());
     }
-    
+
     private PhotonResult createDummyResult(String postCode, String name, String osmKey,
                     String osmValue) {
         return new MockPhotonResult()

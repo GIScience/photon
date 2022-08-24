@@ -175,7 +175,7 @@ public class ReverseRequestFactoryTest {
         assertEquals(reverseRequest.getLimit().longValue(), 50);
         Mockito.verify(mockRequest, Mockito.times(1)).queryParams("limit");
     }
-    
+
     @Test
     public void testDistanceSortDefault() throws Exception {
         Request mockRequest = createRequestWithLongitudeLatitude(-87d, 41d);

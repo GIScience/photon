@@ -70,7 +70,7 @@ public class CommandLineArgs {
 
     @Parameter(names = "-cors-any", description = "enable cross-site resource sharing for any origin ((default CORS not supported)")
     private boolean corsAnyOrigin = false;
-    
+
     @Parameter(names = "-cors-origin", description = "enable cross-site resource sharing for the specified origin (default CORS not supported)")
     private String corsOrigin = null;
 
@@ -80,4 +80,3 @@ public class CommandLineArgs {
     @Parameter(names = "-h", description = "show help / usage")
     private boolean usage = false;
 }
-
