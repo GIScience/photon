@@ -1,6 +1,5 @@
 FROM openjdk:17-jdk-alpine3.14 as photon-builder
 
-ARG SKIP_TESTS=true
 
 # Install pbzip2 for parallel extraction
 RUN apk -U upgrade --update && \
@@ -12,7 +11,10 @@ COPY ./es /photon/es
 COPY ./src /photon/src
 COPY ./pom.xml /photon/pom.xml
 
-RUN mvn -T 15 --no-transfer-progress package -Dmaven.test.skip=$SKIP_TESTS
+ARG SKIP_TESTS=true
+ARG CORES=2
+
+RUN mvn -T ${CORES:-$(nproc)} --no-transfer-progress package -Dmaven.test.skip=$SKIP_TESTS
 
 RUN ls -sahlS target/photon-*.jar
 
