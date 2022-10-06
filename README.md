@@ -45,7 +45,7 @@ wget -O - https://download1.graphhopper.com/public/photon-db-latest.tar.bz2 | bz
 # you can significantly speed up extracting using pbzip2 (recommended):
 wget -O - https://download1.graphhopper.com/public/photon-db-latest.tar.bz2 | pbzip2 -cd | tar x
  ```
- 
+
 Now get the latest version of photon from
 [the releases](https://github.com/komoot/photon/releases) and start it:
 
@@ -152,7 +152,7 @@ http://localhost:2322/api?q=berlin&lang=it
 ```
 
 #### Filter results by bounding box
-Expected format is minLon,minLat,maxLon,maxLat. 
+Expected format is minLon,minLat,maxLon,maxLat.
 ```
 http://localhost:2322/api?q=berlin&bbox=9.5,51.5,11.5,53.5
 ```

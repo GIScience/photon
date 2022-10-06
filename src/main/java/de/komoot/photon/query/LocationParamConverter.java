@@ -18,7 +18,7 @@ public class LocationParamConverter {
     public LocationParamConverter(boolean mandatory) {
         this.mandatory = mandatory;
     }
-    
+
     public Point apply(Request webRequest) throws BadRequestException {
         Point location;
         String lonParam = webRequest.queryParams("lon");
@@ -26,7 +26,7 @@ public class LocationParamConverter {
         if (!mandatory && lonParam == null && latParam == null) {
             return null;
         }
-        
+
         try {
             Double lon = Double.valueOf(lonParam);
             if (lon > 180.0 || lon < -180.00) {

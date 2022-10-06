@@ -12,7 +12,7 @@ public class PhotonDocTest {
     @Test
     public void testCompleteAddressOverwritesStreet() {
         PhotonDoc doc = simplePhotonDoc();
-        
+
         HashMap<String, String> streetNames = new HashMap<>();
         streetNames.put("name", "parent place street");
         doc.setAddressPartIfNew(AddressType.STREET, streetNames);

@@ -178,12 +178,12 @@ public class PhotonQueryBuilder {
                 }).boostMode(CombineFunction.MULTIPLY).scoreMode(ScoreMode.MAX);
         return this;
     }
-    
+
     public PhotonQueryBuilder withBoundingBox(Envelope bbox) {
         if (bbox == null) return this;
         bboxQueryBuilder = new GeoBoundingBoxQueryBuilder("coordinate");
         bboxQueryBuilder.setCorners(bbox.getMaxY(), bbox.getMinX(), bbox.getMinY(), bbox.getMaxX());
-        
+
         return this;
     }
 
@@ -249,8 +249,8 @@ public class PhotonQueryBuilder {
                 tagFilters.mustNot(andQueryBuilderForExcludeTagFiltering);
             finalQueryBuilder.filter(tagFilters);
         }
-        
-        if (bboxQueryBuilder != null) 
+
+        if (bboxQueryBuilder != null)
             queryBuilderForTopLevelFilter.filter(bboxQueryBuilder);
 
         if (layerQueryBuilder != null)

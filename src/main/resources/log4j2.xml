@@ -6,7 +6,7 @@
 		</Console>
 		<Async name="ASYNC" bufferSize="500">
         	<AppenderRef ref="stdout"/>
-    	</Async>   
+    	</Async>
 	</Appenders>
 	<Loggers>
 	    <Logger name="de.komoot.photon" level="info"/>

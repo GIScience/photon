@@ -180,7 +180,7 @@ public class PhotonDoc {
 
         return houseNumber != null || !name.isEmpty();
     }
-    
+
     /**
      * Extract an address field from an address tag and replace the appropriate address field in the document.
      *
